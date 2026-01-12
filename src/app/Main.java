@@ -1,47 +1,34 @@
 package app;
 
 public class Main {
-    String password = "...";
+    String password = "";
 
-    public static String checkPassword(String password) {
+    /*public static String checkPassword(String password) {
         String res = "WEAK";
-        if (password.length() > 8 && password.length() <= 16 && password.matches(".*\\d.*") && password.matches(".*[A-Z].*") && password.matches(".*[!@#$%^].*")) {
+        if (password.length() > 8 && password.length() <= 16 && password.matches(".*\\d.*") && password.matches(".*[A-Z].*") && password.matches(".*[!@#$%^].*") && !Character.isDigit(password.charAt(0))) {
             res = "STRONG";
         }
         return "Password "  + password + ": " + res;
-    }
+    }*/
+
+    public static String checkPassword(String password) {
+        boolean hasDigit = false;
+        boolean hasUpper = false;
+        boolean hasSpecial = false;
+        String specialChars = "!@#$%";
+
+        for (int i = 0; i < password.length(); i++) {
+            char ch = password.charAt(i);
+
+            if (Character.isDigit(ch)) hasDigit = true;
+            else if (Character.isUpperCase(ch)) hasUpper = true;
+            else if (specialChars.indexOf(ch) != -1) hasSpecial = true;
+        }
+
+        return hasDigit && hasUpper && hasSpecial && password.length() > 8 && password.length() <= 16 && !Character.isDigit(password.charAt(0)) ? ("Password "  + password + ": " + "STRONG") : ("Password "  + password + ": " + "WEAK");
+        }
 
     public static void main(String[] args) {
         System.out.println(checkPassword("asfDpadf@Ad1s"));
     }
 }
-
-/*Додоткова домашка:
-
-Перевірка пароля
-
-Вхідні дані: String password = "..."; // asfDpadf@Ad1s
-
-Завдання:
-
-Написати метод: static String checkPassword(String password)
-
-Умови валідності
-
-Пароль STRONG, якщо:
-
-Довжина 8..16
-Є хоча б 1 цифра
-Є хоча б 1 велика літера (A-Z)
-Є хоча б 1 спецсимвол із набору !@#$%
-Не починається з цифри
-
-Якщо будь-що не виконано → WEAK
-
-Вимоги
-перевірку робити циклом по символах
-використовувати char
-фінальний результат повернути через тернарний оператор: "STRONG" або "WEAK"
-
-Вивід
-Password strength: STRONG*/
