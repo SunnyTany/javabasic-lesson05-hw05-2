@@ -5,7 +5,7 @@ public class Main {
 
     /*public static String checkPassword(String password) {
         String res = "WEAK";
-        if (password.length() > 8 && password.length() <= 16 && password.matches(".*\\d.*") && password.matches(".*[A-Z].*") && password.matches(".*[!@#$%^].*") && !Character.isDigit(password.charAt(0))) {
+        if ( password.length() > 8 && password.length() <= 16 && password.matches(".*\\d.*") && password.matches(".*[A-Z].*") && password.matches(".*[!@#$%^].*") && !Character.isDigit(password.charAt(0))) {
             res = "STRONG";
         }
         return "Password "  + password + ": " + res;
@@ -26,9 +26,9 @@ public class Main {
         }
 
         return hasDigit && hasUpper && hasSpecial && password.length() > 8 && password.length() <= 16 && !Character.isDigit(password.charAt(0)) ? ("Password "  + password + ": " + "STRONG") : ("Password "  + password + ": " + "WEAK");
-        }
+    }
 
     public static void main(String[] args) {
-        System.out.println(checkPassword("asfDpadf@Ad1s"));
+        System.out.println(checkPassword("asfDpadf@1Ads"));
     }
 }
